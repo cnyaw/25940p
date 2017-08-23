@@ -1,0 +1,38 @@
+
+OM
+- - - - - - 
+
+              userdata0     userdata1     userdata2     userdata3
+敵子彈        0             0(三角)(預設)
+                            1(雷射)
+敵機          300           HP            0(方塊)(預設)
+                                          1000(boss)
+
+
+OM2
+- - - - - - 
+
+              userdata0     userdata1     userdata2     userdata3
+星星          階層          R             G             B
+
+
+OM3
+- - - - - - 
+
+              userdata0     userdata1     userdata2     userdata3
+文字字元      400           ASCII         Size
+選單游標      500
+
+
+OM4
+- - - - - - 
+
+              userdata0     userdata1     userdata2     userdata3
+粒子          200           R             G             B
+爆炸碎片      201
+
+
+OM5
+- - - - - - 
+              userdata0     userdata1     userdata2     userdata3
+我方子彈      100
