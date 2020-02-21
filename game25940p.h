@@ -953,9 +953,9 @@ public:
 
   void sInit(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       stage.popAndPush(&MyGame::sMainMenu);
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
 
       //
       // Create stars.
@@ -968,7 +968,7 @@ public:
 
   void sMainMenu(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
@@ -978,7 +978,7 @@ public:
 
       om3.update(mElapsedTime, player);
 
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
 
       mPlaying = false;
       mTimer = 0.7f;
@@ -994,7 +994,7 @@ public:
 
   void sMainMenu2(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       //
       // Handle keys.
@@ -1026,9 +1026,9 @@ public:
 
       updateMenuItem();
 
-    } else if (LEAVE == s) {
+    } else if (sw2::LEAVE == s) {
       mMenuItem = -1;
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mMenuItem = 0;
       mCursorTimeX = .0f;
       getCursorPos();
@@ -1039,14 +1039,14 @@ public:
 
   void sQuitGame(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
         stage.popAndPush(&MyGame::sQuitGame2);
         return;
       }
       om3.update(mElapsedTime, player);
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 1.2f;
       setCharObjUserdata0(1.0f);
     }
@@ -1054,7 +1054,7 @@ public:
 
   void sQuitGame2(int s, sw2::uint_ptr)
   {
-    if (JOIN == s) {
+    if (sw2::JOIN == s) {
       mQuit = true;
     }
   }
