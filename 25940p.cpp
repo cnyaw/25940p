@@ -8,12 +8,11 @@
 #include "swArchive.h"
 #include "swStageStack.h"
 #include "swGeometry.h"
-#pragma comment(lib, "sw2.lib")
 
 #include "../stge/stge/stge.h"
 #include "../stge/stge/par_yard.h"
 
-#define LOAD_SCRIPT_FROM_SCRIPT_CODE
+//#define LOAD_SCRIPT_FROM_SCRIPT_CODE
 
 #ifdef LOAD_SCRIPT_FROM_SCRIPT_CODE
 #include "p25940.cpp"

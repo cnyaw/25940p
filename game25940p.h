@@ -612,12 +612,12 @@ public:
 
   void sAllClear(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       om3.update(mElapsedTime, player);
       if (0 == om3.actions.size() && 0 == om3.objects.size()) {
         stage.popAndPush(&MyGame::sMainMenu);
       }
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       om3.reset();
       om3.run("all_clear", 0, 0);
     }
@@ -625,14 +625,14 @@ public:
 
   void sGameMenu(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
         stage.popAndPush(&MyGame::sGameMenu2);
         return;
       }
       om3.update(mElapsedTime, player);
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 0.7f;
       om3.reset();
       om3.run("game_menu", 0, 0);
@@ -641,7 +641,7 @@ public:
 
   void sGameMenu2(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       //
       // Handle keys.
@@ -674,9 +674,9 @@ public:
 
       updateMenuItem();
 
-    } else if (LEAVE == s) {
+    } else if (sw2::LEAVE == s) {
       mMenuItem = -1;
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mMenuItem = 0;
       mCursorTimeX = .0f;
       getCursorPos();
@@ -687,14 +687,14 @@ public:
 
   void sGameMenu3(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
         stage.pop();
         return;
       }
       om3.update(mElapsedTime, player);
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 0.5f;
       setCharObjUserdata0(.0f);
     }
@@ -702,7 +702,7 @@ public:
 
   void sGameOver(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       if (.0f < player.mShakeTime) {
         player.mShakeTime -= mElapsedTime;
@@ -721,7 +721,7 @@ public:
       om4.update(mElapsedTime, player);
       om5.update(mElapsedTime, player);
 
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 0.7f;
       om4.run("fx_hit", player.x, player.y);
       om4.run("fx_destroy", player.x, player.y);
@@ -731,14 +731,14 @@ public:
 
   void sGameOver2(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
         stage.popAndPush(&MyGame::sGameOver3);
         return;
       }
       om3.update(mElapsedTime, player);
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 0.6f;
       mMenuItem = -1;
       om3.reset();
@@ -748,7 +748,7 @@ public:
 
   void sGameOver3(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       //
       // Handle keys.
@@ -775,9 +775,9 @@ public:
 
       updateMenuItem();
 
-    } else if (LEAVE == s) {
+    } else if (sw2::LEAVE == s) {
       mMenuItem = -1;
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mMenuItem = 0;
       mCursorTimeX = .0f;
       getCursorPos();
@@ -788,14 +788,14 @@ public:
 
   void sGamePlay(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
         stage.popAndPush(&MyGame::sGamePlay2);
         return;
       }
       om3.update(mElapsedTime, player);
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 1.0f;
       setCharObjUserdata0(.0f);
       mPlaying = false;
@@ -808,7 +808,7 @@ public:
 
   void sGamePlay2(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
@@ -822,7 +822,7 @@ public:
       om4.actions[mJet].y = player.y;
       om4.actions[mJet].direction = 270.0f + 180.0f;
 
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
 
       mPlaying = true;
       player.x = 0;
@@ -837,14 +837,14 @@ public:
       om4.reset();
       mJet = om4.run("pennn", player.x, player.y);
 
-    } else if (LEAVE == s) {
+    } else if (sw2::LEAVE == s) {
       om4.freeAction(mJet);
     }
   }
 
   void sGamePlay3(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       //
       // Handle keys.
@@ -872,7 +872,7 @@ public:
         stage.popAndPush(&MyGame::sGamePlay4);
       }
 
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
 
       mWeapon = mJet = -1;
       player.mFinish = false;
@@ -881,14 +881,14 @@ public:
       om5.reset();
       om.run("stage1", 0, 0);
 
-    } else if (LEAVE == s) {
+    } else if (sw2::LEAVE == s) {
       om5.reset();
     }
   }
 
   void sGamePlay4(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
@@ -913,7 +913,7 @@ public:
         }
       }
 
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 1.5f;
       player.mFinish = true;
       player.mShakeTime = .0f;
@@ -926,7 +926,7 @@ public:
 
   void sGamePlay5(int s, sw2::uint_ptr)
   {
-    if (TRIGGER == s) {
+    if (sw2::TRIGGER == s) {
 
       mTimer -= mElapsedTime;
       if (.0f > mTimer) {
@@ -941,11 +941,11 @@ public:
       om4.actions[mJet].y = player.y;
       om4.actions[mJet].direction = 270.0f + 180.0f;
 
-    } else if (LEAVE == s) {
+    } else if (sw2::LEAVE == s) {
       mPlaying = false;
       om.reset();
       om4.reset();
-    } else if (JOIN == s) {
+    } else if (sw2::JOIN == s) {
       mTimer = 2.5f;
       mJet = om4.run("pennn", player.x, player.y);
     }
