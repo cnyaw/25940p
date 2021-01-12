@@ -38,7 +38,7 @@ public:
   template<class ObjectManagerT>
   bool init(ObjectManagerT& om, int idAction, int idNewObj)
   {
-    mRot = sw2::rangeRand(0.0f,360.0f);
+    mRot = sw2::Util::rangeRand(0.0f,360.0f);
     return true;
   }
 
@@ -303,7 +303,7 @@ public:
 
 #ifndef LOAD_SCRIPT_FROM_SCRIPT_CODE
 #ifdef _DEBUG
-    if (stge::Parser::parse("25940.txt", scm)) {
+    if (stge::Parser::parse("25940.stge", scm)) {
 
       //
       // 1, load script from file system.
@@ -320,7 +320,7 @@ public:
       sw2::Archive* ar = sw2::Archive::alloc();
 
       std::stringstream ss;
-      bool result = ar->addFileSystem(ssdata) && ar->loadFile("25940.txt", ss) && stge::Parser::parse(ss, scm);
+      bool result = ar->addFileSystem(ssdata) && ar->loadFile("25940.stge", ss) && stge::Parser::parse(ss, scm);
       sw2::Archive::free(ar);
       if (!result) {
         return false;

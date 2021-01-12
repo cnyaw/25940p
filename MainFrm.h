@@ -175,8 +175,8 @@ public:
     float bdOffsetX = .0f, bdOffsetY = .0f;
 
     if (g.mPlaying && .0f < g.player.mShakeTime) {
-      bdOffsetX = sw2::rangeRand(-3.0f, 3.0f);
-      bdOffsetY = sw2::rangeRand(-3.0f, 3.0f);
+      bdOffsetX = sw2::Util::rangeRand(-3.0f, 3.0f);
+      bdOffsetY = sw2::Util::rangeRand(-3.0f, 3.0f);
     }
 
     //
