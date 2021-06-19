@@ -17,5 +17,5 @@ include $(PSPSDK)/lib/build.mak
 font.h : font.raw
 	bin2c font.raw font.h font
 
-script.h : ../25940.txt
-	bin2c ../25940.txt script.h script
+script.h : ../25940.stge
+	bin2c ../25940.stge script.h script

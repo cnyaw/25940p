@@ -46,7 +46,7 @@ void stgeLoadScript(stge::ScriptManager& scm)
 }
 
 #define LOAD_SCRIPT_FROM_SCRIPT_CODE
-#include "game25940p.h"
+#include "game.h"
 
 #include "font.h"
 
@@ -407,8 +407,8 @@ int main(int argc, char* argv[])
 
         if (g.mPlaying && .0f < g.player.mShakeTime)
         {
-            bdOffsetX = sw2::rangeRand(-3.0f,3.0f);
-            bdOffsetY = sw2::rangeRand(-3.0f,3.0f);
+            bdOffsetX = sw2::Util::rangeRand(-3.0f,3.0f);
+            bdOffsetY = sw2::Util::rangeRand(-3.0f,3.0f);
         }
 
         // draw stars

@@ -17,7 +17,7 @@
 #ifdef LOAD_SCRIPT_FROM_SCRIPT_CODE
 #include "p25940.cpp"
 #else
-#include "p25940.c"                     // zipped 25940.txt bin data.
+#include "p25940.c"                     // zipped 25940.stge bin data.
 #endif
 
 #include "AtlOpengl.h"

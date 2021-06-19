@@ -3,7 +3,6 @@
 // Used by 25940p.rc
 //
 #define IDR_MAINFRAME                   128
-#define IDB_BITMAP1                     201
 
 // Next default values for new objects
 // 
