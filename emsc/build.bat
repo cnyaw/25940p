@@ -1,0 +1,1 @@
+em++ -I../../smallworld2/include -I../../stge -I../../good/src/good -I/open/stb -I/open/yard-1.5 -s USE_ZLIB=1 -s GL_UNSAFE_OPTS=0 -s LEGACY_GL_EMULATION=1 ../../smallworld2/src/swArchive.cpp ../../smallworld2/src/swTraceTool.cpp ../../smallworld2/src/swUtil.cpp ../../smallworld2/src/swZipUtil.cpp main.cpp

@@ -17,6 +17,7 @@ public:
   float d;
   int viewWidth, viewHeight;
   float hWidth, hHeight;
+  GLuint texture;
   MyGame g;
 
   void drawChar(int c) const
@@ -33,6 +34,7 @@ public:
     float x1 = (x + cw) / 256.0f, y1 = (256 - y - ch) / 256.0f;
 
     glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture);
     glDisable(GL_DEPTH_TEST);
     glBegin(GL_QUADS);
       glTexCoord2f(x0, y1);
@@ -144,10 +146,14 @@ public:
     //
 
     if (img.isValid()) {
-      GLuint texture = 0;
+      texture = 0;
       glGenTextures(1, &texture);
       glBindTexture(GL_TEXTURE_2D, texture);
+#ifdef __EMSCRIPTEN__
+      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.w, img.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.dat);
+#else
       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.w, img.h, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, img.dat);
+#endif
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     }
