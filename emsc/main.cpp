@@ -34,6 +34,17 @@
 #include "../app.h"
 
 MyApp app;
+int app_keys = 0;
+
+extern "C" {
+
+int EMSCRIPTEN_KEEPALIVE cSetKeyStates(int keys)
+{
+  app_keys = keys;
+  return 1;
+}
+
+} // extern "C"
 
 bool initSDL(int w, int h)
 {
@@ -55,49 +66,9 @@ bool initSDL(int w, int h)
   return true;
 }
 
-bool pollSDL(Uint32& keys)
-{
-  SDL_Event event;
-
-  while (SDL_PollEvent(&event)) {
-    switch(event.type)
-    {
-    case SDL_KEYDOWN:
-      switch (event.key.keysym.sym)
-      {
-      case SDLK_UP: keys |= MyGame::KEY_UP; break;
-      case SDLK_DOWN: keys |= MyGame::KEY_DOWN; break;
-      case SDLK_LEFT: keys |= MyGame::KEY_LEFT; break;
-      case SDLK_RIGHT: keys |= MyGame::KEY_RIGHT; break;
-      case SDLK_ESCAPE: keys |= MyGame::KEY_CANCEL; break;
-      case SDLK_RETURN: keys |= MyGame::KEY_SELECT; break;
-      case SDLK_z: keys |= MyGame::KEY_FIRE; break;
-      }
-      return false;
-    case SDL_KEYUP:
-      switch (event.key.keysym.sym)
-      {
-      case SDLK_UP: keys &= ~MyGame::KEY_UP; break;
-      case SDLK_DOWN: keys &= ~MyGame::KEY_DOWN; break;
-      case SDLK_LEFT: keys &= ~MyGame::KEY_LEFT; break;
-      case SDLK_RIGHT: keys &= ~MyGame::KEY_RIGHT; break;
-      case SDLK_ESCAPE: keys &= ~MyGame::KEY_CANCEL; break;
-      case SDLK_RETURN: keys &= ~MyGame::KEY_SELECT; break;
-      case SDLK_z: keys &= ~MyGame::KEY_FIRE; break;
-      }
-      return false;
-    case SDL_QUIT:
-      return true;
-    }
-  }
-  return false;
-}
-
 void trigger()
 {
-  Uint32 keys = 0;
-  pollSDL(keys);
-  app.update(1/60.0f, keys);
+  app.update(1/60.0f, app_keys);
   app.render();
 }
 
