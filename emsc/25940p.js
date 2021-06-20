@@ -50,6 +50,8 @@ function updateKeyState(e, s) {
   case 'KeyZ':
     keyStates[6] = s;
     break;
+  default:
+    return;
   }
   var keys = getKeyStates();
   Module.ccall('cSetKeyStates', 'number', ['number'], [keys]);
