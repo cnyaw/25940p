@@ -92,9 +92,13 @@ public:
 
   void drawPoint() const
   {
+#ifdef __EMSCRIPTEN__
+    fillRect();
+#else
     glBegin(GL_POINTS);
       glVertex2f(0, 0);
     glEnd();
+#endif
   }
 
   void drawRect() const
