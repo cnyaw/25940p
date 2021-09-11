@@ -45,6 +45,7 @@ function updateKeyState(e, s) {
     keyStates[4] = s;
     break;
   case 'Escape':
+  case 'KeyQ':
     keyStates[5] = s;
     break;
   case 'KeyZ':
