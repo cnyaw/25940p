@@ -320,7 +320,7 @@ public:
       sw2::Archive* ar = sw2::Archive::alloc();
 
       std::stringstream ss;
-      bool result = ar->addFileSystem(ssdata) && ar->loadFile("25940.stge", ss) && stge::Parser::parse(ss, scm);
+      bool result = ar->addStreamFileSystem(ssdata) && ar->loadFile("25940.stge", ss) && stge::Parser::parse(ss, scm);
       sw2::Archive::free(ar);
       if (!result) {
         return false;
