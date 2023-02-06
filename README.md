@@ -1,7 +1,7 @@
 # 25940p
 
 Game Play Video https://www.youtube.com/watch?v=OPCEVO3yxOY <br/>
-Play https://smallworld.idv.tw/game/25940p/game.html
+Play https://smallworld.idv.tw/game/25940p/play.html
 
 ![image](screenshot/21-4.png)
 ![image](screenshot/21-5.png)
