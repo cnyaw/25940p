@@ -74,11 +74,11 @@ public:
 
     int type = (int)user[0];
     if (OBJ_BULLET == type) {           // Enemy bullet.
-      if (sw2::RECT_t<float>(
+      if (sw2::FloatRect(
                  player.x - 3,
                  player.y - 3,
                  player.x + 3,
-                 player.y + 3).ptInRect(sw2::POINT_t<float>(x,y))) {
+                 player.y + 3).ptInRect(sw2::FloatPoint(x,y))) {
 
         if (!player.omFx.run("fx_hit", x, y)) {
           return true;
@@ -107,11 +107,11 @@ public:
       //
 
       if (1000 == (int)user[2] &&
-          sw2::RECT_t<float>(
+          sw2::FloatRect(
                  x - 6,
                  y - 6,
                  x + 6,
-                 y + 6).ptInRect(sw2::POINT_t<float>(player.x,player.y))) {
+                 y + 6).ptInRect(sw2::FloatPoint(player.x,player.y))) {
 
         player.mHealTime = .0f;
         if (0 < player.mHP) {
@@ -130,7 +130,7 @@ public:
 
         stge::Object& o = player.omBullet.objects[i];
 
-        if (!sw2::RECT_t<float>(x - 6, y - 6, x + 6, y + 6).ptInRect(sw2::POINT_t<float>(o.x,o.y))) {
+        if (!sw2::FloatRect(x - 6, y - 6, x + 6, y + 6).ptInRect(sw2::FloatPoint(o.x,o.y))) {
           continue;
         }
 

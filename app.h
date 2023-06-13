@@ -220,14 +220,14 @@ public:
     // Draw objects.
     //
 
-    sw2::RECT_t<int> rc(rcBound);
+    sw2::IntRect rc(rcBound);
     rc.inflate(-25, -25);
 
     for (int i = g.om.objects.first(); -1 != i; i = g.om.objects.next(i)) {
 
       MyObject const& o = g.om.objects[i];
 
-      if (!rc.ptInRect(sw2::POINT_t<int>((int)o.x, (int)o.y))) {
+      if (!rc.ptInRect(sw2::IntPoint((int)o.x, (int)o.y))) {
         continue;
       }
 
@@ -271,7 +271,7 @@ public:
 
       MyObject const& o = g.om4.objects[i];
 
-      if (!rc.ptInRect(sw2::POINT_t<int>((int)o.x, (int)o.y))) {
+      if (!rc.ptInRect(sw2::IntPoint((int)o.x, (int)o.y))) {
         continue;
       }
 
@@ -302,7 +302,7 @@ public:
 
       stge::Object const& o = g.om5.objects[i];
 
-      if (!rc.ptInRect(sw2::POINT_t<int>((int)o.x, (int)o.y))) {
+      if (!rc.ptInRect(sw2::IntPoint((int)o.x, (int)o.y))) {
         continue;
       }
 
@@ -366,7 +366,7 @@ public:
 
       stge::Object const& o = g.om3.objects[i];
 
-      if (!rc.ptInRect(sw2::POINT_t<int>((int)o.x, (int)o.y))) {
+      if (!rc.ptInRect(sw2::IntPoint((int)o.x, (int)o.y))) {
         continue;
       }
 
