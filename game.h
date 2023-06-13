@@ -8,7 +8,7 @@
 
 #pragma once
 
-sw2::RECT_t<int> rcBound, rcCollision;
+sw2::IntRect rcBound, rcCollision;
 
 class MyObject : public stge::Object
 {
@@ -60,7 +60,7 @@ public:
     // Bounding check.
     //
 
-    if (!rcBound.ptInRect(sw2::POINT_t<int>((int)x, (int)y))) {
+    if (!rcBound.ptInRect(sw2::IntPoint((int)x, (int)y))) {
       return false;
     }
 
@@ -68,7 +68,7 @@ public:
     // Collision check.
     //
 
-    if (!rcCollision.ptInRect(sw2::POINT_t<int>((int)x, (int)y))) {
+    if (!rcCollision.ptInRect(sw2::IntPoint((int)x, (int)y))) {
       return true;
     }
 
@@ -292,7 +292,7 @@ public:
     mKeys = mLastKeys = 0;
     starx = stary = .0f;
 
-    rcCollision = sw2::RECT_t<int>(0,0,w,h);
+    rcCollision = sw2::IntRect(0,0,w,h);
     rcCollision.offset(-w/2, -h/2);
     rcBound = rcCollision;
     rcBound.inflate(25,25);
