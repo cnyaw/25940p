@@ -1,7 +1,7 @@
 
 #pragma once
 
-#define GOOD_SUPPORT_GDIPLUS
+#define GOOD_SUPPORT_GDIPLUS_IMG
 #include "gx/img.h"
 
 #include "game.h"
@@ -15,6 +15,7 @@ public:
   DECLARE_FRAME_WND_CLASS(NULL, IDR_MAINFRAME)
 
   MyApp app;
+  sw2::FpsHelper fps;
 
   virtual BOOL PreTranslateMessage(MSG* pMsg)
   {
@@ -70,7 +71,7 @@ public:
       RedrawWindow();
     }
 
-    ::Sleep(timeLeft());
+    fps.wait();
 
     return FALSE;
   }
@@ -88,6 +89,7 @@ public:
   int OnCreate(LPCREATESTRUCT lpCreateStruct)
   {
     ::srand(::GetTickCount());
+    fps.start(FPS);
 
     //
     // Register object for message filtering and idle updates.
@@ -133,24 +135,5 @@ public:
   void OnResize(int width, int height)
   {
     app.resize(width, height);
-  }
-
-  //
-  // Helper.
-  //
-
-  DWORD timeLeft()
-  {
-    static DWORD nextTime = ::GetTickCount() + (int)(1000/(float)FPS);
-    DWORD now = ::GetTickCount();
-
-    DWORD left = 0;
-    if(nextTime > now) {
-      left = nextTime - now;
-    }
-
-    nextTime += (int)(1000/(float)FPS);
-
-    return left;
   }
 };
