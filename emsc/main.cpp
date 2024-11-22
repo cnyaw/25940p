@@ -15,6 +15,7 @@
 #include "SDL/SDL_opengl.h"
 
 #include <emscripten.h>
+#include <emscripten/html5.h>
 
 #include "swArchive.h"
 #include "swStageStack.h"
@@ -27,8 +28,8 @@
 #define GOOD_SUPPORT_STB_IMG
 #include "gx/img.h"
 
-#include "../p25940.c"                  // zipped 25940.stge bin data.
-#include "font.c"                       // font.bmp
+#include "../p25940.c"                  // Generate p25940.c from p25940.zip(25940.stge) as uchar array P25940_MOD by bin2c tool.
+#include "font.c"                       // Generate font.c from font.bmp as uchar array FONT_BMP_BIN by bin2c tool.,
 
 #include "../game.h"
 #include "../app.h"
@@ -62,7 +63,7 @@ bool initSDL(int w, int h)
     return false;
   }
 
-  emscripten_set_canvas_size(w, h);
+  emscripten_set_canvas_element_size("canvas", w, h);
   return true;
 }
 

@@ -1,5 +1,3 @@
-// 25940p.cpp : main source file for 25940.exe
-//
 
 #include "stdafx.h"
 
@@ -15,9 +13,9 @@
 //#define LOAD_SCRIPT_FROM_SCRIPT_CODE
 
 #ifdef LOAD_SCRIPT_FROM_SCRIPT_CODE
-#include "p25940.cpp"
+#include "p25940.cpp"                   // Generate p25940.cpp from 25940.stge by stge::CodeGenerator.
 #else
-#include "p25940.c"                     // zipped 25940.stge bin data.
+#include "p25940.c"                     // Generate p25940.c from p25940.zip(25940.stge) as uchar array P25940_MOD by bin2c tool.
 #endif
 
 #include "AtlOpengl.h"
@@ -51,7 +49,7 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lpstrCmdLine, int nCmdShow)
 {
     HRESULT hRes = ::CoInitialize(NULL);
-// If you are running on NT 4.0 or higher you can use the following call instead to 
+// If you are running on NT 4.0 or higher you can use the following call instead to
 // make the EXE free threaded. This means that calls come in on a random RPC thread.
 //    HRESULT hRes = ::CoInitializeEx(NULL, COINIT_MULTITHREADED);
     ATLASSERT(SUCCEEDED(hRes));
